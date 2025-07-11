@@ -46,7 +46,7 @@ public class LeaguesPage {
     public String menuIcon = "button[class*='flex']:has(svg)";
     public String addPlayerText = "text='Add Players'";
     public String addPlayerButton = "text='Add Players'";
-    public String addPlayerNameDropdown = "div.react-select.__dropdown-indicator";
+    public String playerNameDropdownToAdd = "div.react-select.__dropdown-indicator";
     public String joinTypeSingle = "input[type='radio'][value='Single']";
     public String paymentMethodDropdown = "div.react-select.w-full__dropdown-indicator";
     public String paymentMethod = "text='Cash'";
@@ -62,6 +62,10 @@ public class LeaguesPage {
     public String cancelLeagueText = "text=Cancel league";
     public String yesButtonToCancelLeague = "button:has-text('Yes')";
     public String cancelLeagueSuccessMessage = "text='league has been canceled successfully'";
+    public String shareWithPlayersText = "text='Share with players'";
+    public String mocionIcon = "img.cursor-pointer[src*='logoIcon']";
+    public String playerNameDropdownTOShare = "div.__dropdown-indicator";
+    public String okButtonToShare = "button.border-primary";
 
     public LeaguesPage(Page page) {
         this.page = page;
@@ -345,8 +349,8 @@ public class LeaguesPage {
         return this;
     }
 
-    public LeaguesPage selectPlayerName() {
-        page.locator(addPlayerNameDropdown).click();
+    public LeaguesPage selectPlayerNameToAdd() {
+        page.locator(playerNameDropdownToAdd).click();
         page.keyboard().press("Enter");
         return this;
     }
@@ -397,6 +401,27 @@ public class LeaguesPage {
 
     public LeaguesPage clickCancelLeague() {
         page.locator(cancelLeagueText).click();
+        return this;
+    }
+
+    public LeaguesPage clickShareWithPlayers() {
+        page.locator(shareWithPlayersText).click();
+        return this;
+    }
+
+    public LeaguesPage clickMocionIcon() {
+        page.locator(mocionIcon).click();
+        return this;
+    }
+
+    public LeaguesPage selectPlayerNameToShare() {
+        page.locator(playerNameDropdownTOShare).click();
+        page.keyboard().press("Enter");
+        return this;
+    }
+
+    public LeaguesPage clickOkButtonToShare() {
+        page.locator(okButtonToShare).click();
         return this;
     }
 
