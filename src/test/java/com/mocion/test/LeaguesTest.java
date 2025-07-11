@@ -200,7 +200,7 @@ public class LeaguesTest extends BaseTest {
                 .clickMenuIcon()
                 .clickAddPlayers()
                 .clickAddPlayersButton()
-                .selectPlayerName()
+                .selectPlayerNameToAdd()
                 .selectJoinTypeSingle()
                 .selectPaymentMethod()
                 .clickAddPlayerSaveButton();
@@ -262,6 +262,28 @@ public class LeaguesTest extends BaseTest {
                 .clickYesToCancelLeague();
 
         assertThat(leaguesPage.cancelLeagueSuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "League share with players should successful")
+    public void verify_league_share_with_players_should_succeed() {
+        String conversationText = "you invited to join in this event go to this link to join";
+        leaguesPage = new LeaguesPage(page);
+
+        setLocationPermissionAllowed();
+        userLogin();
+        leaguesPage
+                .clickEventsFromNavigationBar()
+                .clickLeaguesFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickMenuIcon()
+                .clickShareWithPlayers()
+                .clickMocionIcon()
+                .selectPlayerNameToShare()
+                .clickOkButtonToShare()
+                .clickFirstConversation()
+                .clickSendIcon();
+
+        Assert.assertTrue(leaguesPage.sentMessageTextContent().contains(conversationText));
     }
 
     private List<String> generateLeagueData() {
