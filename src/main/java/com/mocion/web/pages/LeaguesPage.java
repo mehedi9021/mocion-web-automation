@@ -44,10 +44,15 @@ public class LeaguesPage {
     public String menuIcon = "button[class*='flex']:has(svg)";
     public String addPlayerText = "text='Add Players'";
     public String addPlayerButton = "text='Add Players'";
-    public String addPlayerNameDropdown = "div.react-select.__dropdown-indicator";
-    public String joinTypeSingle = "input[type='radio'][value='Single']";
+    public String addPlayerDropdown = "div[class*='dropdown-indicator']";
     public String paymentMethodDropdown = "div.react-select.w-full__dropdown-indicator";
+    public String joinTypeSingle = "input[type='radio'][value='Single']";
+    public String joinTypeDouble = "input[type='radio'][value='Double']";
     public String paymentMethodInApp = "text='In app'";
+    public String paymentMethodPaymentLink = "text='Payment Link'";
+    public String paymentMethodBankTransfer = "text='Bank transfer'";
+    public String paymentMethodCash = "text='Cash'";
+    public String paymentMethodCreditDebitCard = "text='Credit/Debit card'";
     public String addPlayerSaveButton = "button[type='submit']";
     public String addPlayersToLeagueSuccessMessageLocator = "text='Players were added successfully as League Players'";
     public String chatWithPlayersText = "li:has-text('chat with players')";
@@ -62,8 +67,29 @@ public class LeaguesPage {
     public String cancelLeagueSuccessMessage = "text='league has been canceled successfully'";
     public String leagueCreateDropdowns = ".react-select__dropdown-indicator";
     public String paymentDetailsApp = "text='App'";
+    public String paymentDetailsClub = "text='Club'";
     public String saveLeagueButton = "button.bg-primary.text-white";
     public String scheduleCourtsText = "li.flex.cursor-pointer:has-text('Schedule courts')";
+    public String shareWithPlayersText = "text='Share with players'";
+    public String mocionIcon = "img.cursor-pointer[src*='logoIcon']";
+    public String playerNameDropdownTOShare = "div.__dropdown-indicator";
+    public String okButtonToShare = "button.border-primary";
+    public String downSizeCourtText = "label:has(img):has-text('Down size league')";
+    public String yesToDownSizeCourtText = "button.bg-primary.text-white.rounded-full";
+    public String leagueDownSizeSuccessMessage = "text='League was edited successfully'";
+    public String generateGroupsButton = "button:has-text(\"Generate groups\")";
+    public String saveAndNextButton = "button:has-text(\"save And Next\")";
+    public String nextButton = "//button[contains(text(), 'Next')]";
+    public String scheduleText = "text='Schedule'";
+    public String numberOfGroupsDropdown = ".react-select__indicator.react-select__dropdown-indicator";
+    public String numberOfGroupsTwo = "text='2'";
+    public String editMatchScoreIcon = "button:has(img[alt='edit icon'])";
+    public String saveMatchScoreButton = "button:has-text(\"Save\")";
+    public String scoreOneInputField = "input[name='score_1']";
+    public String scoreTwoInputField = "input[name='score_2']";
+    public String generateResultsButton = "button:has-text(\"Generate results\")";
+    public String phaseOneNextButton = "button:has-text(\"Next\")";
+    public String scoresUpdateSuccessMessageLocator = "text='scores have been updated successfully'";
 
     public LeaguesPage(Page page) {
         this.page = page;
@@ -336,8 +362,14 @@ public class LeaguesPage {
         return this;
     }
 
-    public LeaguesPage selectPlayerName() {
-        page.locator(addPlayerNameDropdown).click();
+    public LeaguesPage selectPlayerNameToAdd() {
+        page.locator(addPlayerDropdown).nth(0).click();
+        page.keyboard().press("Enter");
+        return this;
+    }
+
+    public LeaguesPage selectTeammateNameToAdd() {
+        page.locator(addPlayerDropdown).nth(1).click();
         page.keyboard().press("Enter");
         return this;
     }
@@ -347,9 +379,38 @@ public class LeaguesPage {
         return this;
     }
 
+    public LeaguesPage selectJoinTypeDouble() {
+        page.locator(joinTypeDouble).click();
+        return this;
+    }
+
+    public LeaguesPage selectPaymentMethodCash() {
+        page.locator(paymentMethodDropdown).click();
+        page.locator(paymentMethodCash).click();
+        return this;
+    }
+
+    public LeaguesPage selectPaymentMethodCreditDebitCard() {
+        page.locator(paymentMethodDropdown).click();
+        page.locator(paymentMethodCreditDebitCard).click();
+        return this;
+    }
+
     public LeaguesPage selectPaymentMethodInApp() {
         page.locator(paymentMethodDropdown).click();
         page.locator(paymentMethodInApp).click();
+        return this;
+    }
+
+    public LeaguesPage selectPaymentMethodPaymentLink() {
+        page.locator(paymentMethodDropdown).click();
+        page.locator(paymentMethodPaymentLink).click();
+        return this;
+    }
+
+    public LeaguesPage selectPaymentMethodBankTransfer() {
+        page.locator(paymentMethodDropdown).click();
+        page.locator(paymentMethodBankTransfer).click();
         return this;
     }
 
@@ -389,6 +450,12 @@ public class LeaguesPage {
         return this;
     }
 
+    public LeaguesPage selectPaymentDetailsClub() {
+        page.locator(leagueCreateDropdowns).nth(1).click();
+        page.locator(paymentDetailsClub).click();
+        return this;
+    }
+
     public LeaguesPage selectAssignOrganizer() {
         page.locator(leagueCreateDropdowns).nth(2).click();
         page.keyboard().press("Enter");
@@ -411,6 +478,126 @@ public class LeaguesPage {
     public LeaguesPage clickScheduleCourts() {
         page.locator(scheduleCourtsText).click();
         return this;
+    }
+
+    public LeaguesPage clickShareWithPlayers() {
+        page.locator(shareWithPlayersText).click();
+        return this;
+    }
+
+    public LeaguesPage clickMocionIcon() {
+        page.locator(mocionIcon).click();
+        return this;
+    }
+
+    public LeaguesPage selectPlayerNameToShare() {
+        page.locator(playerNameDropdownTOShare).click();
+        page.keyboard().press("Enter");
+        return this;
+    }
+
+    public LeaguesPage clickOkButtonToShare() {
+        page.locator(okButtonToShare).click();
+        return this;
+    }
+
+    public LeaguesPage clickDownSizeLeague() {
+        page.locator(downSizeCourtText).click();
+        return this;
+    }
+
+    public LeaguesPage clickGenerateGroupsButton() {
+        page.locator(generateGroupsButton).click();
+        return this;
+    }
+
+    public LeaguesPage clickSaveAndNextButton() {
+        page.locator(saveAndNextButton).click();
+        return this;
+    }
+
+    public LeaguesPage clickNextButton() {
+        page.locator(nextButton).click();
+        return this;
+    }
+
+    public LeaguesPage clickSchedule() {
+        page.locator(scheduleText).click();
+        return this;
+    }
+
+    public LeaguesPage selectNumberOfGroupsTwo() {
+        page.locator(numberOfGroupsDropdown).click();
+        page.locator(numberOfGroupsTwo).click();
+        return this;
+    }
+
+    public LeaguesPage clickPhaseOneNextButton() {
+        page.locator(phaseOneNextButton).click();
+        return this;
+    }
+
+    public LeaguesPage setSemiFinalMatchScores(String scoreOne, String scoreTwo) {
+        int count = page.locator(editMatchScoreIcon).count();
+
+        for (int i = 0; i < count; i++) {
+            page.locator(editMatchScoreIcon).nth(i).click();
+            fillMatchScoreOne(scoreOne);
+            fillMatchScoreTwo(scoreTwo);
+            clickSaveMatchScoreButton();
+        }
+        return this;
+    }
+
+    public LeaguesPage setFinalMatchScores(String scoreOne, String scoreTwo) {
+        setSemiFinalMatchScores(scoreOne, scoreTwo);
+        return this;
+    }
+
+    public LeaguesPage clickSemiFinalGenerateResultsButton() {
+        page.locator(generateResultsButton).nth(0).click();
+        return this;
+    }
+
+    public LeaguesPage clickPhaseOneGenerateResultsButton() {
+        int count = page.locator(generateResultsButton).count();
+
+        for (int i = 0; i < count; i++) {
+            page.locator(generateResultsButton).nth(0).click();
+        }
+        return this;
+    }
+
+    public LeaguesPage setPhaseOneMatchScores(String scoreOne, String scoreTwo) {
+        int count = page.locator(editMatchScoreIcon).count();
+
+        for (int i = 0; i < count; i++) {
+            page.locator(editMatchScoreIcon).nth(i).click();
+            fillMatchScoreOne(scoreOne);
+            fillMatchScoreTwo(scoreTwo);
+            clickSaveMatchScoreButton();
+        }
+        return this;
+    }
+
+    public void clickFinalGenerateResultsButton() {
+        page.locator(generateResultsButton).nth(0).click();
+    }
+
+    public void fillMatchScoreOne(String scoreOne) {
+        page.locator(scoreOneInputField).fill(scoreOne);
+    }
+
+    public void clickSaveMatchScoreButton() {
+        page.locator(saveMatchScoreButton).click();
+    }
+
+    public void fillMatchScoreTwo(String scoreTwo) {
+        page.locator(scoreTwoInputField).fill(scoreTwo);
+    }
+
+    public void clickYestToDownSizeLeague() {
+        page.locator(yesToDownSizeCourtText).click();
     }
 
     private void incrementStartDate() {
@@ -459,6 +646,10 @@ public class LeaguesPage {
         return page.locator(sentMessageText).last().textContent();
     }
 
+    public Locator scoresUpdateSuccessMessageLocator() {
+        return page.locator(scoresUpdateSuccessMessageLocator);
+    }
+
     public Locator cancelLeagueSuccessMessageLocator() {
         return page.locator(cancelLeagueSuccessMessage);
     }
@@ -473,5 +664,9 @@ public class LeaguesPage {
 
     public Locator leagueEditSuccessMessageLocator() {
         return page.locator(leagueEditSuccessMessage);
+    }
+
+    public Locator leagueDownSizeSuccessMessageLocator() {
+        return page.locator(leagueDownSizeSuccessMessage);
     }
 }

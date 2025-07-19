@@ -464,13 +464,13 @@ public class TournamentsTest extends BaseTest {
                 .selectNumberOfTopSeatsTwo()
                 .clickGenerateGroupsButton()
                 .clickSaveAndNextButton()
-                .clickNextButtonPhaseOne()
-                .clickSaveAndNextButtonPhaseOne()
+                .clickPhaseOneNextButton()
+                .clickPhaseOneSaveAndNextButton()
                 .setRoundRobinPhaseOneMatchScores(scoreOne, scoreTwo)
                 .clickPhaseOneGenerateResultsButton()
-                .clickNextButtonPhaseOne()
+                .clickPhaseOneNextButton()
                 .setRoundRobinSemiFinalMatchScores(scoreOne, scoreTwo)
-                .clickFinalGenerateResultsButton()
+                .clickSemiFinalGenerateResultsButton()
                 .setRoundRobinFinalMatchScores(scoreOne, scoreTwo)
                 .clickFinalGenerateResultsButton();
 

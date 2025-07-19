@@ -34,8 +34,8 @@ public class LeaguesTest extends BaseTest {
         random = new Random();
     }
 
-    @Test(description = "Public league create should successful")
-    public void verify_public_league_create_should_succeed() {
+    @Test(description = "Public league create with payment app should successful")
+    public void verify_public_league_create_with_payment_app_should_succeed() {
         List<String> data = generateLeagueData();
 
         initPages();
@@ -73,8 +73,47 @@ public class LeaguesTest extends BaseTest {
         assertThat(leaguesPage.leagueCreateSuccessMessageLocator()).isVisible();
     }
 
-    @Test(description = "Private league create should successful")
-    public void verify_private_league_create_should_succeed() {
+    @Test(description = "Public league create with payment club should successful")
+    public void verify_public_league_create_with_payment_club_should_succeed() {
+        List<String> data = generateLeagueData();
+
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        leaguesPage
+                .clickEventsFromNavigationBar()
+                .clickLeaguesFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickCreateButton()
+                .fillLeagueName(data.get(0))
+                .fillOrganizationName(data.get(1))
+                .fillLeagueDescription(data.get(4))
+                .fillSponsor(data.get(2))
+                .uploadSponsorLogo()
+                .fillPrize(data.get(3))
+                .uploadLeagueImage()
+                .fillMinPlayerLevel(MIN_PLAYER_LEVEL)
+                .fillMaxPlayerLevel(MAX_PLAYER_LEVEL)
+                .fillPricePerPlayer(PRICE_PER_PLAYER)
+                .selectPaymentDetailsClub()
+                .selectGenderMixed()
+                .selectEventTypePublic()
+                .selectNumberOfPlayer()
+                .selectAssignOrganizer()
+                .fillTermsAndConditions(data.get(5))
+                .selectStartDate()
+                .selectEndDate()
+                .selectRegistrationDeadline()
+                .selectAllowedDays(ALLOWED_DAYS)
+                .selectStartTime()
+                .selectEndTime()
+                .clickSaveLeagueButton();
+
+        assertThat(leaguesPage.leagueCreateSuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Private league create with payment app should successful")
+    public void verify_private_league_create_with_payment_app_should_succeed() {
         List<String> data = generateLeagueData();
 
         initPages();
@@ -112,8 +151,47 @@ public class LeaguesTest extends BaseTest {
         assertThat(leaguesPage.leagueCreateSuccessMessageLocator()).isVisible();
     }
 
-    @Test(description = "Add players to league should successful")
-    public void verify_add_players_to_league_should_succeed() {
+    @Test(description = "Private league create with payment club should successful")
+    public void verify_private_league_create_with_payment_club_should_succeed() {
+        List<String> data = generateLeagueData();
+
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        leaguesPage
+                .clickEventsFromNavigationBar()
+                .clickLeaguesFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickCreateButton()
+                .fillLeagueName(data.get(0))
+                .fillOrganizationName(data.get(1))
+                .fillLeagueDescription(data.get(4))
+                .fillSponsor(data.get(2))
+                .uploadSponsorLogo()
+                .fillPrize(data.get(3))
+                .uploadLeagueImage()
+                .fillMinPlayerLevel(MIN_PLAYER_LEVEL)
+                .fillMaxPlayerLevel(MAX_PLAYER_LEVEL)
+                .fillPricePerPlayer(PRICE_PER_PLAYER)
+                .selectPaymentDetailsClub()
+                .selectGenderMixed()
+                .selectEventTypePrivate()
+                .selectNumberOfPlayer()
+                .selectAssignOrganizer()
+                .fillTermsAndConditions(data.get(5))
+                .selectStartDate()
+                .selectEndDate()
+                .selectRegistrationDeadline()
+                .selectAllowedDays(ALLOWED_DAYS)
+                .selectStartTime()
+                .selectEndTime()
+                .clickSaveLeagueButton();
+
+        assertThat(leaguesPage.leagueCreateSuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Add players to league with join type single and payment cash should successful")
+    public void verify_add_players_to_league_with_join_type_single_and_payment_cash_should_succeed() {
         initPages();
         locationPage.setLocationPermissionAllowed();
         loginPage.userLogin();
@@ -124,9 +202,194 @@ public class LeaguesTest extends BaseTest {
                 .clickMenuIcon()
                 .clickAddPlayers()
                 .clickAddPlayersButton()
-                .selectPlayerName()
+                .selectPlayerNameToAdd()
+                .selectJoinTypeSingle()
+                .selectPaymentMethodCash()
+                .clickAddPlayerSaveButton();
+
+        assertThat(leaguesPage.addPlayersToLeagueSuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Add players to league with join type single and payment credit debit card should successful")
+    public void verify_add_players_to_league_with_join_type_single_and_payment_credit_debit_card_should_succeed() {
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        leaguesPage
+                .clickEventsFromNavigationBar()
+                .clickLeaguesFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickMenuIcon()
+                .clickAddPlayers()
+                .clickAddPlayersButton()
+                .selectPlayerNameToAdd()
+                .selectJoinTypeSingle()
+                .selectPaymentMethodCreditDebitCard()
+                .clickAddPlayerSaveButton();
+
+        assertThat(leaguesPage.addPlayersToLeagueSuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Add players to league with join type single and payment in app should successful")
+    public void verify_add_players_to_league_with_join_type_single_and_payment_in_app_should_succeed() {
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        leaguesPage
+                .clickEventsFromNavigationBar()
+                .clickLeaguesFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickMenuIcon()
+                .clickAddPlayers()
+                .clickAddPlayersButton()
+                .selectPlayerNameToAdd()
                 .selectJoinTypeSingle()
                 .selectPaymentMethodInApp()
+                .clickAddPlayerSaveButton();
+
+        assertThat(leaguesPage.addPlayersToLeagueSuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Add players to league with join type single and payment payment link should successful")
+    public void verify_add_players_to_league_with_join_type_single_and_payment_payment_link_should_succeed() {
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        leaguesPage
+                .clickEventsFromNavigationBar()
+                .clickLeaguesFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickMenuIcon()
+                .clickAddPlayers()
+                .clickAddPlayersButton()
+                .selectPlayerNameToAdd()
+                .selectJoinTypeSingle()
+                .selectPaymentMethodPaymentLink()
+                .clickAddPlayerSaveButton();
+
+        assertThat(leaguesPage.addPlayersToLeagueSuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Add players to league with join type single and payment bank transfer should successful")
+    public void verify_add_players_to_league_with_join_type_single_and_payment_bank_transfer_should_succeed() {
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        leaguesPage
+                .clickEventsFromNavigationBar()
+                .clickLeaguesFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickMenuIcon()
+                .clickAddPlayers()
+                .clickAddPlayersButton()
+                .selectPlayerNameToAdd()
+                .selectJoinTypeSingle()
+                .selectPaymentMethodBankTransfer()
+                .clickAddPlayerSaveButton();
+
+        assertThat(leaguesPage.addPlayersToLeagueSuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Add players to league with join type double and payment cash should successful")
+    public void verify_add_players_to_league_with_join_type_double_and_payment_cash_should_succeed() {
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        leaguesPage
+                .clickEventsFromNavigationBar()
+                .clickLeaguesFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickMenuIcon()
+                .clickAddPlayers()
+                .clickAddPlayersButton()
+                .selectPlayerNameToAdd()
+                .selectJoinTypeDouble()
+                .selectTeammateNameToAdd()
+                .selectPaymentMethodCash()
+                .clickAddPlayerSaveButton();
+
+        assertThat(leaguesPage.addPlayersToLeagueSuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Add players to league with join type double and payment credit debit card should successful")
+    public void verify_add_players_to_league_with_join_type_double_and_payment_credit_debit_card_should_succeed() {
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        leaguesPage
+                .clickEventsFromNavigationBar()
+                .clickLeaguesFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickMenuIcon()
+                .clickAddPlayers()
+                .clickAddPlayersButton()
+                .selectPlayerNameToAdd()
+                .selectJoinTypeDouble()
+                .selectTeammateNameToAdd()
+                .selectPaymentMethodCreditDebitCard()
+                .clickAddPlayerSaveButton();
+
+        assertThat(leaguesPage.addPlayersToLeagueSuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Add players to league with join type double and payment in app should successful")
+    public void verify_add_players_to_league_with_join_type_double_and_payment_in_app_should_succeed() {
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        leaguesPage
+                .clickEventsFromNavigationBar()
+                .clickLeaguesFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickMenuIcon()
+                .clickAddPlayers()
+                .clickAddPlayersButton()
+                .selectPlayerNameToAdd()
+                .selectJoinTypeDouble()
+                .selectTeammateNameToAdd()
+                .selectPaymentMethodInApp()
+                .clickAddPlayerSaveButton();
+
+        assertThat(leaguesPage.addPlayersToLeagueSuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Add players to league with join type double and payment payment link should successful")
+    public void verify_add_players_to_league_with_join_type_double_and_payment_payment_link_should_succeed() {
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        leaguesPage
+                .clickEventsFromNavigationBar()
+                .clickLeaguesFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickMenuIcon()
+                .clickAddPlayers()
+                .clickAddPlayersButton()
+                .selectPlayerNameToAdd()
+                .selectJoinTypeDouble()
+                .selectTeammateNameToAdd()
+                .selectPaymentMethodPaymentLink()
+                .clickAddPlayerSaveButton();
+
+        assertThat(leaguesPage.addPlayersToLeagueSuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Add players to league with join type double and payment bank transfer should successful")
+    public void verify_add_players_to_league_with_join_type_double_and_payment_bank_transfer_should_succeed() {
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        leaguesPage
+                .clickEventsFromNavigationBar()
+                .clickLeaguesFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickMenuIcon()
+                .clickAddPlayers()
+                .clickAddPlayersButton()
+                .selectPlayerNameToAdd()
+                .selectJoinTypeDouble()
+                .selectTeammateNameToAdd()
+                .selectPaymentMethodBankTransfer()
                 .clickAddPlayerSaveButton();
 
         assertThat(leaguesPage.addPlayersToLeagueSuccessMessageLocator()).isVisible();
@@ -152,6 +415,22 @@ public class LeaguesTest extends BaseTest {
         assertThat(leaguesPage.leagueCreateSuccessMessageLocator()).isVisible();
     }
 
+    @Test(description = "Down size league should successful")
+    public void verify_down_size_league_should_succeed() {
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        leaguesPage
+                .clickEventsFromNavigationBar()
+                .clickLeaguesFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickMenuIcon()
+                .clickDownSizeLeague()
+                .clickYestToDownSizeLeague();
+
+        assertThat(leaguesPage.leagueDownSizeSuccessMessageLocator()).isVisible();
+    }
+
     @Test(description = "Chat with league players should successful")
     public void verify_chat_with_league_players_should_succeed() {
         String conversationText = "Hello, this is a test message";
@@ -167,6 +446,58 @@ public class LeaguesTest extends BaseTest {
                 .clickChatWithPlayers()
                 .clickFirstConversation()
                 .fillConversationText(conversationText)
+                .clickSendIcon();
+
+        Assert.assertTrue(leaguesPage.sentMessageTextContent().contains(conversationText));
+    }
+
+    @Test(description = "Setting up schedule for league should successful")
+    public void verify_setting_up_schedule_for_league_should_succeed() {
+        String scoreOne = "4";
+        String scoreTwo = "2";
+
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        leaguesPage
+                .clickEventsFromNavigationBar()
+                .clickLeaguesFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickMenuIcon()
+                .clickSchedule()
+                .selectNumberOfGroupsTwo()
+                .clickGenerateGroupsButton()
+                .clickSaveAndNextButton()
+                .clickNextButton()
+                .clickSaveAndNextButton()
+                .setPhaseOneMatchScores(scoreOne, scoreTwo)
+                .clickPhaseOneGenerateResultsButton()
+                .clickPhaseOneNextButton()
+                .setSemiFinalMatchScores(scoreOne, scoreTwo)
+                .clickSemiFinalGenerateResultsButton()
+                .setFinalMatchScores(scoreOne, scoreTwo)
+                .clickFinalGenerateResultsButton();
+
+        assertThat(leaguesPage.scoresUpdateSuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Share league with players should successful")
+    public void verify_share_league_with_players_should_succeed() {
+        String conversationText = "you invited to join in this event go to this link to join";
+
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        leaguesPage
+                .clickEventsFromNavigationBar()
+                .clickLeaguesFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickMenuIcon()
+                .clickShareWithPlayers()
+                .clickMocionIcon()
+                .selectPlayerNameToShare()
+                .clickOkButtonToShare()
+                .clickFirstConversation()
                 .clickSendIcon();
 
         Assert.assertTrue(leaguesPage.sentMessageTextContent().contains(conversationText));

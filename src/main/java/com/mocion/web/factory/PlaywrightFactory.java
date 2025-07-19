@@ -13,7 +13,7 @@ public class PlaywrightFactory {
         browser = playwright.chromium().launch(new BrowserType.LaunchOptions()
                 .setHeadless(false)
                 .setArgs(List.of("--start-maximized"))
-                .setSlowMo(1500)
+                .setSlowMo(2000)
         );
     }
 

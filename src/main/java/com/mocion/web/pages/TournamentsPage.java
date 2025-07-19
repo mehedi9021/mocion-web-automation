@@ -75,8 +75,8 @@ public class TournamentsPage {
     public String editMatchScoreIcon = "button:has(img[alt='edit icon'])";
     public String yesToConfirmMatchResultButton = "button:has-text(\"Yes\")";
     public String scoresUpdateSuccessMessageLocator = "text='scores have been updated successfully'";
-    public String nextButtonPhaseOne = "button:has-text(\"Next\")";
-    public String saveAndNextButtonPhaseOne = "button:has-text(\"save and next\")";
+    public String phaseOneNextButton = "button:has-text(\"Next\")";
+    public String phaseOneSaveAndNextButton = "button:has-text(\"save and next\")";
     public String generateResultsButton = "button:has-text(\"Generate results\")";
     public String courtOptions = ".react-select__option";
     public String selectedSlotsCount = "h3.text-primary";
@@ -481,18 +481,18 @@ public class TournamentsPage {
         return this;
     }
 
-    public TournamentsPage clickFinalGenerateResultsButton() {
+    public TournamentsPage clickSemiFinalGenerateResultsButton() {
         page.locator(generateResultsButton).nth(0).click();
         return this;
     }
 
-    public TournamentsPage clickNextButtonPhaseOne() {
-        page.locator(nextButtonPhaseOne).click();
+    public TournamentsPage clickPhaseOneNextButton() {
+        page.locator(phaseOneNextButton).click();
         return this;
     }
 
-    public TournamentsPage clickSaveAndNextButtonPhaseOne() {
-        page.locator(saveAndNextButtonPhaseOne).click();
+    public TournamentsPage clickPhaseOneSaveAndNextButton() {
+        page.locator(phaseOneSaveAndNextButton).click();
         return this;
     }
 
@@ -570,6 +570,10 @@ public class TournamentsPage {
         page.locator(dateFields).nth(2).click();
         page.keyboard().press("ArrowRight");
         page.keyboard().press("Enter");
+    }
+
+    public void clickFinalGenerateResultsButton() {
+        page.locator(generateResultsButton).nth(0).click();
     }
 
     public void clickYesToCancelTournament() {
