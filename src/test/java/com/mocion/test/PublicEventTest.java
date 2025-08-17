@@ -400,6 +400,46 @@ public class PublicEventTest extends BaseTest {
         assertThat(publicEventPage.eventCreateSuccessMessageLocator()).isVisible();
     }
 
+    @Test(description = "Add players to public event with join type single and payment cash should successful")
+    public void verify_add_players_to_public_event_with_join_type_single_and_payment_cash_should_succeed() {
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        publicEventPage
+                .clickEventsFromNavigationBar()
+                .clickPublicEventFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickMenuIcon()
+                .clickAddPlayers()
+                .clickAddPlayersButton()
+                .selectPlayerNameToAdd()
+                .selectJoinTypeSingle()
+                .selectPaymentMethodCash()
+                .clickAddPlayerSaveButton();
+
+        assertThat(publicEventPage.addPlayersToEventSuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Add players to public event with join type single and payment credit debit card should successful")
+    public void verify_add_players_to_public_event_with_join_type_single_and_payment_credit_debit_card_should_succeed() {
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        publicEventPage
+                .clickEventsFromNavigationBar()
+                .clickPublicEventFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickMenuIcon()
+                .clickAddPlayers()
+                .clickAddPlayersButton()
+                .selectPlayerNameToAdd()
+                .selectJoinTypeSingle()
+                .selectPaymentMethodCreditDebitCard()
+                .clickAddPlayerSaveButton();
+
+        assertThat(publicEventPage.addPlayersToEventSuccessMessageLocator()).isVisible();
+    }
+
     // Number of players 8 - 8
     @Test(description = "Schedule courts for public event should successful")
     public void verify_schedule_courts_for_public_event_should_succeed() {
