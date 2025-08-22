@@ -45,6 +45,10 @@ public class AcademyPage {
     public String cancelBookingText = "button:has-text('Cancel Booking')";
     public String yesButtonToCancelBooking = "button:has-text('Yes')";
     public String cancelBookingSuccessMessage = "text='academy was cancelled'";
+    public String paymentMethodCreditDebitCard = "text='Credit/Debit card'";
+    public String paymentMethodInCash = "text='Cash'";
+    public String paymentMethodPaymentLink = "text='Payment Link'";
+    public String paymentMethodBankTransfer = "text='Bank transfer'";
 
     public AcademyPage(Page page) {
         this.page = page;
@@ -204,8 +208,32 @@ public class AcademyPage {
         return this;
     }
 
-    public AcademyPage selectPlayerNameToAdd() {
+    public AcademyPage selectPlayerOneNameToAdd() {
         page.locator(addPlayersDropdown).nth(0).click();
+        page.keyboard().press("Enter");
+        return this;
+    }
+
+    public AcademyPage selectPlayerTwoNameToAdd() {
+        page.locator(addPlayersDropdown).nth(1).click();
+        page.keyboard().press("Enter");
+        return this;
+    }
+
+    public AcademyPage selectPlayerThreeNameToAdd() {
+        page.locator(addPlayersDropdown).nth(2).click();
+        page.keyboard().press("Enter");
+        return this;
+    }
+
+    public AcademyPage selectPlayerFourNameToAdd() {
+        page.locator(addPlayersDropdown).nth(3).click();
+        page.keyboard().press("Enter");
+        return this;
+    }
+
+    public AcademyPage selectPlayerFiveNameToAdd() {
+        page.locator(addPlayersDropdown).nth(4).click();
         page.keyboard().press("Enter");
         return this;
     }
@@ -213,6 +241,30 @@ public class AcademyPage {
     public AcademyPage selectPaymentMethodInApp() {
         page.locator(PaymentMethodDropdown).nth(0).click();
         page.locator(paymentMethodInApp).click();
+        return this;
+    }
+
+    public AcademyPage selectPaymentMethodPaymentLink() {
+        page.locator(PaymentMethodDropdown).nth(1).click();
+        page.locator(paymentMethodPaymentLink).click();
+        return this;
+    }
+
+    public AcademyPage selectPaymentMethodCreditDebitCard() {
+        page.locator(PaymentMethodDropdown).nth(2).click();
+        page.locator(paymentMethodCreditDebitCard).click();
+        return this;
+    }
+
+    public AcademyPage selectPaymentMethodCash() {
+        page.locator(PaymentMethodDropdown).nth(3).click();
+        page.locator(paymentMethodInCash).click();
+        return this;
+    }
+
+    public AcademyPage selectPaymentMethodBankTransfer() {
+        page.locator(PaymentMethodDropdown).nth(4).click();
+        page.locator(paymentMethodBankTransfer).click();
         return this;
     }
 

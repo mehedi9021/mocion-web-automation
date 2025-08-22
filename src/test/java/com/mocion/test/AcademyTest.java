@@ -232,8 +232,80 @@ public class AcademyTest extends BaseTest {
                 .selectClubName(CLUB_NAME)
                 .clickMenuIcon()
                 .clickAddPlayers()
-                .selectPlayerNameToAdd()
+                .selectPlayerOneNameToAdd()
                 .selectPaymentMethodInApp()
+                .clickSaveButton();
+
+        assertThat(academyPage.addPlayerToAcademySuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Add players to academy with payment cash should successful")
+    public void verify_add_player_to_academy_with_payment_cash_should_succeed() {
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        academyPage
+                .clickCoachingFromNavigationBar()
+                .clickAcademyEventFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickMenuIcon()
+                .clickAddPlayers()
+                .selectPlayerTwoNameToAdd()
+                .selectPaymentMethodCash()
+                .clickSaveButton();
+
+        assertThat(academyPage.addPlayerToAcademySuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Add players to academy with payment bank transfer should successful")
+    public void verify_add_player_to_academy_with_payment_bank_transfer_should_succeed() {
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        academyPage
+                .clickCoachingFromNavigationBar()
+                .clickAcademyEventFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickMenuIcon()
+                .clickAddPlayers()
+                .selectPlayerThreeNameToAdd()
+                .selectPaymentMethodBankTransfer()
+                .clickSaveButton();
+
+        assertThat(academyPage.addPlayerToAcademySuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Add players to academy with payment credit debit card should successful")
+    public void verify_add_player_to_academy_with_payment_credit_debit_card_should_succeed() {
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        academyPage
+                .clickCoachingFromNavigationBar()
+                .clickAcademyEventFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickMenuIcon()
+                .clickAddPlayers()
+                .selectPlayerFourNameToAdd()
+                .selectPaymentMethodCreditDebitCard()
+                .clickSaveButton();
+
+        assertThat(academyPage.addPlayerToAcademySuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Add players to academy with payment payment link card should successful")
+    public void verify_add_player_to_academy_with_payment_payment_link_should_succeed() {
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        academyPage
+                .clickCoachingFromNavigationBar()
+                .clickAcademyEventFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickMenuIcon()
+                .clickAddPlayers()
+                .selectPlayerFiveNameToAdd()
+                .selectPaymentMethodPaymentLink()
                 .clickSaveButton();
 
         assertThat(academyPage.addPlayerToAcademySuccessMessageLocator()).isVisible();
