@@ -16,11 +16,15 @@ public class AcademyPage {
     public String academyCreateDropdowns = ".react-select__dropdown-indicator";
     public String academyNameField = "input[name='name']";
     public String courtTypeIndoor = "text='Indoor'";
+    public String courtTypeOutdoor = "text='Outdoor'";
+    public String courtTypeRoofed = "text='Roofed'";
     public String courtPrivacyPublic = "text='Public'";
+    public String courtPrivacyPrivate = "text='Private'";
     public String registrationPricePerPlayerField = "input[name='registration_price_per_player']";
     public String genderBoth = "input[type='radio'][value='both']";
     public String maximumNumberOfPlayersField = "input[name='max_number_of_players']";
     public String bookingInAppOn = "input[type='radio'][value='true']";
+    public String bookingInAppOff = "input[type='radio'][value='false']";
     public String dateFields = "div.absolute.right-1.top-2 svg";
     public String startTimeField = "#react-select-6-input";
     public String endTimeField = ".react-select__value-container";
@@ -77,9 +81,27 @@ public class AcademyPage {
         return this;
     }
 
+    public AcademyPage selectCourtTypeOutdoor() {
+        page.locator(academyCreateDropdowns).nth(0).click();
+        page.locator(courtTypeOutdoor).click();
+        return this;
+    }
+
+    public AcademyPage selectCourtTypeRoofed() {
+        page.locator(academyCreateDropdowns).nth(0).click();
+        page.locator(courtTypeRoofed).click();
+        return this;
+    }
+
     public AcademyPage selectCourtPrivacyPublic() {
         page.locator(academyCreateDropdowns).nth(1).click();
         page.locator(courtPrivacyPublic).click();
+        return this;
+    }
+
+    public AcademyPage selectCourtPrivacyPrivate() {
+        page.locator(academyCreateDropdowns).nth(1).click();
+        page.locator(courtPrivacyPrivate).click();
         return this;
     }
 
@@ -106,6 +128,11 @@ public class AcademyPage {
 
     public AcademyPage selectBookingInAppOn() {
         page.locator(bookingInAppOn).click();
+        return this;
+    }
+
+    public AcademyPage selectBookingInAppOff() {
+        page.locator(bookingInAppOff).click();
         return this;
     }
 
