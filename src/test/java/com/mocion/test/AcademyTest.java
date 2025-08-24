@@ -61,6 +61,184 @@ public class AcademyTest extends BaseTest {
         assertThat(academyPage.academyCreateSuccessMessageLocator()).isVisible();
     }
 
+    @Test(description = "Private indoor academy create with booking in app should successful")
+    public void verify_private_indoor_academy_create_with_booking_in_app_should_succeed() throws InterruptedException {
+        List<String> data = generateAcademyData();
+
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        academyPage
+                .clickCoachingFromNavigationBar()
+                .clickAcademyEventFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickCreateButton()
+                .fillAcademyName(data.getFirst())
+                .selectCourtTypeIndoor()
+                .selectCourtPrivacyPrivate()
+                .selectCoach()
+                .fillRegistrationPricePerPlayer(REGISTRATION_PRICE_PER_PLAYER)
+                .fillMaximumNumberOfPlayers(max_number_OF_PLAYERS)
+                .selectGenderBoth()
+                .selectBookingInAppOn()
+                .selectStartDate()
+                .selectEndDate()
+                .selectAllowedDays(ALLOWED_DAYS)
+                .selectEndTime()
+                .selectStartTime()
+                .clickCheckAvailableButton()
+                .selectAvailableCourt()
+                .clickSaveAndPublishButton();
+
+        assertThat(academyPage.academyCreateSuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Public outdoor academy create with booking in app should successful")
+    public void verify_public_outdoor_academy_create_with_booking_in_app_should_succeed() throws InterruptedException {
+        List<String> data = generateAcademyData();
+
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        academyPage
+                .clickCoachingFromNavigationBar()
+                .clickAcademyEventFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickCreateButton()
+                .fillAcademyName(data.getFirst())
+                .selectCourtTypeOutdoor()
+                .selectCourtPrivacyPublic()
+                .selectCoach()
+                .fillRegistrationPricePerPlayer(REGISTRATION_PRICE_PER_PLAYER)
+                .fillMaximumNumberOfPlayers(max_number_OF_PLAYERS)
+                .selectGenderBoth()
+                .selectBookingInAppOn()
+                .selectStartDate()
+                .selectEndDate()
+                .selectAllowedDays(ALLOWED_DAYS)
+                .selectEndTime()
+                .selectStartTime()
+                .clickCheckAvailableButton()
+                .selectAvailableCourt()
+                .clickSaveAndPublishButton();
+
+        assertThat(academyPage.academyCreateSuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Private outdoor academy create with booking club should successful")
+    public void verify_private_outdoor_academy_create_with_booking_club_should_succeed() throws InterruptedException {
+        List<String> data = generateAcademyData();
+
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        academyPage
+                .clickCoachingFromNavigationBar()
+                .clickAcademyEventFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickCreateButton()
+                .fillAcademyName(data.getFirst())
+                .selectCourtTypeOutdoor()
+                .selectCourtPrivacyPrivate()
+                .selectCoach()
+                .fillRegistrationPricePerPlayer(REGISTRATION_PRICE_PER_PLAYER)
+                .fillMaximumNumberOfPlayers(max_number_OF_PLAYERS)
+                .selectGenderBoth()
+                .selectBookingInAppOff()
+                .selectStartDate()
+                .selectEndDate()
+                .selectAllowedDays(ALLOWED_DAYS)
+                .selectEndTime()
+                .selectStartTime()
+                .clickCheckAvailableButton()
+                .selectAvailableCourt()
+                .clickSaveAndPublishButton();
+
+        assertThat(academyPage.academyCreateSuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Public roffed academy create with booking club should successful")
+    public void verify_public_roffed_academy_create_with_booking_club_should_succeed() throws InterruptedException {
+        List<String> data = generateAcademyData();
+
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        academyPage
+                .clickCoachingFromNavigationBar()
+                .clickAcademyEventFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickCreateButton()
+                .fillAcademyName(data.getFirst())
+                .selectCourtTypeRoffed()
+                .selectCourtPrivacyPublic()
+                .selectCoach()
+                .fillRegistrationPricePerPlayer(REGISTRATION_PRICE_PER_PLAYER)
+                .fillMaximumNumberOfPlayers(max_number_OF_PLAYERS)
+                .selectGenderBoth()
+                .selectBookingInAppOff()
+                .selectStartDate()
+                .selectEndDate()
+                .selectAllowedDays(ALLOWED_DAYS)
+                .selectEndTime()
+                .selectStartTime()
+                .clickCheckAvailableButton()
+                .selectAvailableCourt()
+                .clickSaveAndPublishButton();
+
+        assertThat(academyPage.academyCreateSuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Private roffed academy create with booking club should successful")
+    public void verify_private_roffed_academy_create_with_booking_club_should_succeed() throws InterruptedException {
+        List<String> data = generateAcademyData();
+
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        academyPage
+                .clickCoachingFromNavigationBar()
+                .clickAcademyEventFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickCreateButton()
+                .fillAcademyName(data.getFirst())
+                .selectCourtTypeRoffed()
+                .selectCourtPrivacyPrivate()
+                .selectCoach()
+                .fillRegistrationPricePerPlayer(REGISTRATION_PRICE_PER_PLAYER)
+                .fillMaximumNumberOfPlayers(max_number_OF_PLAYERS)
+                .selectGenderBoth()
+                .selectBookingInAppOff()
+                .selectStartDate()
+                .selectEndDate()
+                .selectAllowedDays(ALLOWED_DAYS)
+                .selectEndTime()
+                .selectStartTime()
+                .clickCheckAvailableButton()
+                .selectAvailableCourt()
+                .clickSaveAndPublishButton();
+
+        assertThat(academyPage.academyCreateSuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Duplicate academy should successful")
+    public void verify_duplicate_academy_should_succeed() {
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        academyPage
+                .clickCoachingFromNavigationBar()
+                .clickAcademyEventFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickMenuIcon()
+                .clickDuplicate()
+                .clickCheckAvailableButton()
+                .selectAvailableCourt()
+                .clickSaveAndPublishButton();
+
+        assertThat(academyPage.academyCreateSuccessMessageLocator()).isVisible();
+    }
+
     @Test(description = "Add players to academy with payment in app should successful")
     public void verify_add_player_to_academy_with_payment_in_app_should_succeed() {
         initPages();
@@ -72,8 +250,80 @@ public class AcademyTest extends BaseTest {
                 .selectClubName(CLUB_NAME)
                 .clickMenuIcon()
                 .clickAddPlayers()
-                .selectPlayerNameToAdd()
+                .selectPlayerOneNameToAdd()
                 .selectPaymentMethodInApp()
+                .clickSaveButton();
+
+        assertThat(academyPage.addPlayerToAcademySuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Add players to academy with payment cash should successful")
+    public void verify_add_player_to_academy_with_payment_cash_should_succeed() {
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        academyPage
+                .clickCoachingFromNavigationBar()
+                .clickAcademyEventFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickMenuIcon()
+                .clickAddPlayers()
+                .selectPlayerTwoNameToAdd()
+                .selectPaymentMethodCash()
+                .clickSaveButton();
+
+        assertThat(academyPage.addPlayerToAcademySuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Add players to academy with payment bank transfer should successful")
+    public void verify_add_player_to_academy_with_payment_bank_transfer_should_succeed() {
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        academyPage
+                .clickCoachingFromNavigationBar()
+                .clickAcademyEventFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickMenuIcon()
+                .clickAddPlayers()
+                .selectPlayerThreeNameToAdd()
+                .selectPaymentMethodBankTransfer()
+                .clickSaveButton();
+
+        assertThat(academyPage.addPlayerToAcademySuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Add players to academy with payment credit debit card should successful")
+    public void verify_add_player_to_academy_with_payment_credit_debit_card_should_succeed() {
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        academyPage
+                .clickCoachingFromNavigationBar()
+                .clickAcademyEventFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickMenuIcon()
+                .clickAddPlayers()
+                .selectPlayerFourNameToAdd()
+                .selectPaymentMethodCreditDebitCard()
+                .clickSaveButton();
+
+        assertThat(academyPage.addPlayerToAcademySuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Add players to academy with payment payment link card should successful")
+    public void verify_add_player_to_academy_with_payment_payment_link_should_succeed() {
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        academyPage
+                .clickCoachingFromNavigationBar()
+                .clickAcademyEventFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickMenuIcon()
+                .clickAddPlayers()
+                .selectPlayerFiveNameToAdd()
+                .selectPaymentMethodPaymentLink()
                 .clickSaveButton();
 
         assertThat(academyPage.addPlayerToAcademySuccessMessageLocator()).isVisible();
