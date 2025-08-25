@@ -260,7 +260,7 @@ public class AcademyPage {
     }
 
     public AcademyPage selectPaymentMethodCreditDebitCard() {
-        page.locator(PaymentMethodDropdown).nth(2).click();
+        page.locator(PaymentMethodDropdown).nth(3).click();
         page.locator(paymentMethodCreditDebitCard).click();
         return this;
     }
@@ -272,7 +272,7 @@ public class AcademyPage {
     }
 
     public AcademyPage selectPaymentMethodBankTransfer() {
-        page.locator(PaymentMethodDropdown).nth(4).click();
+        page.locator(PaymentMethodDropdown).nth(2).click();
         page.locator(paymentMethodBankTransfer).click();
         return this;
     }
