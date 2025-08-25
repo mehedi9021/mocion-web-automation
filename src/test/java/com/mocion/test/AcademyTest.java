@@ -139,70 +139,6 @@ public class AcademyTest extends BaseTest {
                 .clickCreateButton()
                 .fillAcademyName(data.getFirst())
                 .selectCourtTypeOutdoor()
-                .selectCourtPrivacyPublic()
-                .selectCoach()
-                .fillRegistrationPricePerPlayer(REGISTRATION_PRICE_PER_PLAYER)
-                .fillMaximumNumberOfPlayers(max_number_OF_PLAYERS)
-                .selectGenderBoth()
-                .selectBookingInAppOff()
-                .selectStartDate()
-                .selectEndDate()
-                .selectAllowedDays(ALLOWED_DAYS)
-                .selectEndTime()
-                .selectStartTime()
-                .clickCheckAvailableButton()
-                .selectAvailableCourt()
-                .clickSaveAndPublishButton();
-
-        assertThat(academyPage.academyCreateSuccessMessageLocator()).isVisible();
-    }
-
-    @Test(description = "Public roofed academy create with booking club should successful")
-    public void verify_public_roofed_academy_create_with_booking_club_should_succeed() throws InterruptedException {
-        List<String> data = generateAcademyData();
-
-        initPages();
-        locationPage.setLocationPermissionAllowed();
-        loginPage.userLogin();
-        academyPage
-                .clickCoachingFromNavigationBar()
-                .clickAcademyEventFromNavigationBar()
-                .selectClubName(CLUB_NAME)
-                .clickCreateButton()
-                .fillAcademyName(data.getFirst())
-                .selectCourtTypeRoofed()
-                .selectCourtPrivacyPublic()
-                .selectCoach()
-                .fillRegistrationPricePerPlayer(REGISTRATION_PRICE_PER_PLAYER)
-                .fillMaximumNumberOfPlayers(max_number_OF_PLAYERS)
-                .selectGenderBoth()
-                .selectBookingInAppOff()
-                .selectStartDate()
-                .selectEndDate()
-                .selectAllowedDays(ALLOWED_DAYS)
-                .selectEndTime()
-                .selectStartTime()
-                .clickCheckAvailableButton()
-                .selectAvailableCourt()
-                .clickSaveAndPublishButton();
-
-        assertThat(academyPage.academyCreateSuccessMessageLocator()).isVisible();
-    }
-
-    @Test(description = "Private roofed academy create with booking club should successful")
-    public void verify_private_roofed_academy_create_with_booking_club_should_succeed() throws InterruptedException {
-        List<String> data = generateAcademyData();
-
-        initPages();
-        locationPage.setLocationPermissionAllowed();
-        loginPage.userLogin();
-        academyPage
-                .clickCoachingFromNavigationBar()
-                .clickAcademyEventFromNavigationBar()
-                .selectClubName(CLUB_NAME)
-                .clickCreateButton()
-                .fillAcademyName(data.getFirst())
-                .selectCourtTypeRoofed()
                 .selectCourtPrivacyPrivate()
                 .selectCoach()
                 .fillRegistrationPricePerPlayer(REGISTRATION_PRICE_PER_PLAYER)
@@ -214,6 +150,88 @@ public class AcademyTest extends BaseTest {
                 .selectAllowedDays(ALLOWED_DAYS)
                 .selectEndTime()
                 .selectStartTime()
+                .clickCheckAvailableButton()
+                .selectAvailableCourt()
+                .clickSaveAndPublishButton();
+
+        assertThat(academyPage.academyCreateSuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Public roffed academy create with booking club should successful")
+    public void verify_public_roffed_academy_create_with_booking_club_should_succeed() throws InterruptedException {
+        List<String> data = generateAcademyData();
+
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        academyPage
+                .clickCoachingFromNavigationBar()
+                .clickAcademyEventFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickCreateButton()
+                .fillAcademyName(data.getFirst())
+                .selectCourtTypeRoffed()
+                .selectCourtPrivacyPublic()
+                .selectCoach()
+                .fillRegistrationPricePerPlayer(REGISTRATION_PRICE_PER_PLAYER)
+                .fillMaximumNumberOfPlayers(max_number_OF_PLAYERS)
+                .selectGenderBoth()
+                .selectBookingInAppOff()
+                .selectStartDate()
+                .selectEndDate()
+                .selectAllowedDays(ALLOWED_DAYS)
+                .selectEndTime()
+                .selectStartTime()
+                .clickCheckAvailableButton()
+                .selectAvailableCourt()
+                .clickSaveAndPublishButton();
+
+        assertThat(academyPage.academyCreateSuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Private roffed academy create with booking club should successful")
+    public void verify_private_roffed_academy_create_with_booking_club_should_succeed() throws InterruptedException {
+        List<String> data = generateAcademyData();
+
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        academyPage
+                .clickCoachingFromNavigationBar()
+                .clickAcademyEventFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickCreateButton()
+                .fillAcademyName(data.getFirst())
+                .selectCourtTypeRoffed()
+                .selectCourtPrivacyPrivate()
+                .selectCoach()
+                .fillRegistrationPricePerPlayer(REGISTRATION_PRICE_PER_PLAYER)
+                .fillMaximumNumberOfPlayers(max_number_OF_PLAYERS)
+                .selectGenderBoth()
+                .selectBookingInAppOff()
+                .selectStartDate()
+                .selectEndDate()
+                .selectAllowedDays(ALLOWED_DAYS)
+                .selectEndTime()
+                .selectStartTime()
+                .clickCheckAvailableButton()
+                .selectAvailableCourt()
+                .clickSaveAndPublishButton();
+
+        assertThat(academyPage.academyCreateSuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Duplicate academy should successful")
+    public void verify_duplicate_academy_should_succeed() {
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        academyPage
+                .clickCoachingFromNavigationBar()
+                .clickAcademyEventFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickMenuIcon()
+                .clickDuplicate()
                 .clickCheckAvailableButton()
                 .selectAvailableCourt()
                 .clickSaveAndPublishButton();

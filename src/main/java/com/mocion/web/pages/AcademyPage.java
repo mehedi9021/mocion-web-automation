@@ -17,7 +17,7 @@ public class AcademyPage {
     public String academyNameField = "input[name='name']";
     public String courtTypeIndoor = "text='Indoor'";
     public String courtTypeOutdoor = "text='Outdoor'";
-    public String courtTypeRoofed = "text='Roofed'";
+    public String courtTypeRoffed = "text='Roffed'";
     public String courtPrivacyPublic = "text='Public'";
     public String courtPrivacyPrivate = "text='Private'";
     public String registrationPricePerPlayerField = "input[name='registration_price_per_player']";
@@ -34,7 +34,7 @@ public class AcademyPage {
     public String academyCreateSuccessMessage = "text='Successful.'";
     public String coachFieldDropdown = "div.react-select.__indicator";
     public String startTime = "text='12:00 PM'";
-    public String endTime = "text='4:00 PM'";
+    public String endTime = "text='1:00 PM'";
     public String menuIcon = "button:has(svg.w-full.h-auto)";
     public String addPlayerText = "text='Add Players'";
     public String addPlayersDropdown = "div.react-select.__indicator.__dropdown-indicator";
@@ -49,6 +49,7 @@ public class AcademyPage {
     public String paymentMethodInCash = "text='Cash'";
     public String paymentMethodPaymentLink = "text='Payment Link'";
     public String paymentMethodBankTransfer = "text='Bank transfer'";
+    public String duplicateText = "li:has-text('Duplicate')";
 
     public AcademyPage(Page page) {
         this.page = page;
@@ -91,9 +92,9 @@ public class AcademyPage {
         return this;
     }
 
-    public AcademyPage selectCourtTypeRoofed() {
+    public AcademyPage selectCourtTypeRoffed() {
         page.locator(academyCreateDropdowns).nth(0).click();
-        page.locator(courtTypeRoofed).click();
+        page.locator(courtTypeRoffed).click();
         return this;
     }
 
@@ -148,6 +149,9 @@ public class AcademyPage {
 
     public AcademyPage selectEndDate() {
         page.locator(dateFields).nth(1).click();
+        page.keyboard().press("ArrowRight");
+        page.keyboard().press("ArrowRight");
+        page.keyboard().press("ArrowRight");
         page.keyboard().press("Enter");
         return this;
     }
@@ -194,12 +198,17 @@ public class AcademyPage {
     }
 
     public AcademyPage selectAvailableCourt() {
-        page.locator(availableCourt).nth(5).click();
+        page.locator(availableCourt).nth(3).click();
         return this;
     }
 
     public AcademyPage clickMenuIcon() {
         page.locator(menuIcon).nth(3).click();
+        return this;
+    }
+
+    public AcademyPage clickDuplicate() {
+        page.locator(duplicateText).click();
         return this;
     }
 
@@ -245,7 +254,7 @@ public class AcademyPage {
     }
 
     public AcademyPage selectPaymentMethodPaymentLink() {
-        page.locator(PaymentMethodDropdown).nth(1).click();
+        page.locator(PaymentMethodDropdown).nth(4).click();
         page.locator(paymentMethodPaymentLink).click();
         return this;
     }
@@ -257,7 +266,7 @@ public class AcademyPage {
     }
 
     public AcademyPage selectPaymentMethodCash() {
-        page.locator(PaymentMethodDropdown).nth(3).click();
+        page.locator(PaymentMethodDropdown).nth(1).click();
         page.locator(paymentMethodInCash).click();
         return this;
     }
