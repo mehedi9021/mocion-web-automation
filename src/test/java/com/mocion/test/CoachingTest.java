@@ -12,14 +12,14 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 public class CoachingTest extends BaseTest {
     public LoginPage loginPage;
     public LocationPage locationPage;
-    public CoachingPage gameWithCoachPage;
+    public CoachingPage coachingPage;
 
     private static final String CLUB_NAME = "Farah123";
 
     public void initPages() {
         loginPage = new LoginPage(page);
         locationPage = new LocationPage(page);
-        gameWithCoachPage = new CoachingPage(page);
+        coachingPage = new CoachingPage(page);
     }
 
     @Test(description = "Cancel booking with refund should successful")
@@ -27,7 +27,7 @@ public class CoachingTest extends BaseTest {
         initPages();
         locationPage.setLocationPermissionAllowed();
         loginPage.userLogin();
-        gameWithCoachPage
+        coachingPage
                 .clickCoachingFromNavigationBar()
                 .clickGameWithCoachFromNavigationBar()
                 .selectClubName(CLUB_NAME)
@@ -35,10 +35,10 @@ public class CoachingTest extends BaseTest {
                 .clickCancelBooking()
                 .clickCancelWithRefundButton();
 
-        gameWithCoachPage
+        coachingPage
                 .bookingCancelSuccessMessageLocator()
                 .waitFor(new Locator.WaitForOptions()
                         .setState(WaitForSelectorState.VISIBLE));
-        assertThat(gameWithCoachPage.bookingCancelSuccessMessageLocator()).isVisible();
+        assertThat(coachingPage.bookingCancelSuccessMessageLocator()).isVisible();
     }
 }
