@@ -50,7 +50,6 @@ public class CoachingTest extends BaseTest {
                 .selectPlayerOneName()
                 .selectPaymentMethodCash()
                 .clickBookNowButton();
-
     }
 
     @Test(description = "Cancel booking with refund should successful")
