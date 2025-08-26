@@ -19,7 +19,7 @@ public class AcademyTest extends BaseTest {
 
     private static final String CLUB_NAME = "Farah123";
     private static final String REGISTRATION_PRICE_PER_PLAYER = "10";
-    private static final String max_number_OF_PLAYERS = "10";
+    private static final String MAX_NUMBER_OF_PLAYERS = "10";
     private static final List<String> ALLOWED_DAYS = Arrays.asList("Monday", "Tuesday", "Wednesday", "Thursday", "Friday");
 
     public void initPages() {
@@ -46,7 +46,7 @@ public class AcademyTest extends BaseTest {
                 .selectCourtPrivacyPublic()
                 .selectCoach()
                 .fillRegistrationPricePerPlayer(REGISTRATION_PRICE_PER_PLAYER)
-                .fillMaximumNumberOfPlayers(max_number_OF_PLAYERS)
+                .fillMaximumNumberOfPlayers(MAX_NUMBER_OF_PLAYERS)
                 .selectGenderBoth()
                 .selectBookingInAppOn()
                 .selectStartDate()
@@ -78,7 +78,7 @@ public class AcademyTest extends BaseTest {
                 .selectCourtPrivacyPrivate()
                 .selectCoach()
                 .fillRegistrationPricePerPlayer(REGISTRATION_PRICE_PER_PLAYER)
-                .fillMaximumNumberOfPlayers(max_number_OF_PLAYERS)
+                .fillMaximumNumberOfPlayers(MAX_NUMBER_OF_PLAYERS)
                 .selectGenderBoth()
                 .selectBookingInAppOn()
                 .selectStartDate()
@@ -110,7 +110,7 @@ public class AcademyTest extends BaseTest {
                 .selectCourtPrivacyPublic()
                 .selectCoach()
                 .fillRegistrationPricePerPlayer(REGISTRATION_PRICE_PER_PLAYER)
-                .fillMaximumNumberOfPlayers(max_number_OF_PLAYERS)
+                .fillMaximumNumberOfPlayers(MAX_NUMBER_OF_PLAYERS)
                 .selectGenderBoth()
                 .selectBookingInAppOn()
                 .selectStartDate()
@@ -142,7 +142,7 @@ public class AcademyTest extends BaseTest {
                 .selectCourtPrivacyPrivate()
                 .selectCoach()
                 .fillRegistrationPricePerPlayer(REGISTRATION_PRICE_PER_PLAYER)
-                .fillMaximumNumberOfPlayers(max_number_OF_PLAYERS)
+                .fillMaximumNumberOfPlayers(MAX_NUMBER_OF_PLAYERS)
                 .selectGenderBoth()
                 .selectBookingInAppOff()
                 .selectStartDate()
@@ -174,7 +174,7 @@ public class AcademyTest extends BaseTest {
                 .selectCourtPrivacyPublic()
                 .selectCoach()
                 .fillRegistrationPricePerPlayer(REGISTRATION_PRICE_PER_PLAYER)
-                .fillMaximumNumberOfPlayers(max_number_OF_PLAYERS)
+                .fillMaximumNumberOfPlayers(MAX_NUMBER_OF_PLAYERS)
                 .selectGenderBoth()
                 .selectBookingInAppOff()
                 .selectStartDate()
@@ -206,7 +206,7 @@ public class AcademyTest extends BaseTest {
                 .selectCourtPrivacyPrivate()
                 .selectCoach()
                 .fillRegistrationPricePerPlayer(REGISTRATION_PRICE_PER_PLAYER)
-                .fillMaximumNumberOfPlayers(max_number_OF_PLAYERS)
+                .fillMaximumNumberOfPlayers(MAX_NUMBER_OF_PLAYERS)
                 .selectGenderBoth()
                 .selectBookingInAppOff()
                 .selectStartDate()
@@ -311,7 +311,7 @@ public class AcademyTest extends BaseTest {
         assertThat(academyPage.addPlayerToAcademySuccessMessageLocator()).isVisible();
     }
 
-    @Test(description = "Add players to academy with payment payment link card should successful")
+    @Test(description = "Add players to academy with payment payment link should successful")
     public void verify_add_player_to_academy_with_payment_payment_link_should_succeed() {
         initPages();
         locationPage.setLocationPermissionAllowed();
