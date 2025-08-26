@@ -3,7 +3,7 @@ package com.mocion.web.pages;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
-public class GameWithCoachPage {
+public class CoachingPage {
     private final Page page;
 
     public String coachingText = "text='Coaching'";
@@ -14,31 +14,31 @@ public class GameWithCoachPage {
     public String cancelWithRefundButton = "text='Cancel with refund'";
     public String bookingCancelSuccessMessage = "text='Bookings canceled successfully'";
 
-    public GameWithCoachPage(Page page) {
+    public CoachingPage(Page page) {
         this.page = page;
     }
 
-    public GameWithCoachPage clickCoachingFromNavigationBar() {
+    public CoachingPage clickCoachingFromNavigationBar() {
         page.locator(coachingText).click();
         return this;
     }
 
-    public GameWithCoachPage clickGameWithCoachFromNavigationBar() {
+    public CoachingPage clickGameWithCoachFromNavigationBar() {
         page.locator(gameWithCoachText).click();
         return this;
     }
 
-    public GameWithCoachPage selectClubName(String clubName) {
+    public CoachingPage selectClubName(String clubName) {
         page.selectOption(clubNameDropdown, clubName);
         return this;
     }
 
-    public GameWithCoachPage clickMenuIcon() {
+    public CoachingPage clickMenuIcon() {
         page.locator(menuIcon).nth(3).click();
         return this;
     }
 
-    public GameWithCoachPage clickCancelBooking() {
+    public CoachingPage clickCancelBooking() {
         page.locator(cancelBookingText).click();
         return this;
     }
