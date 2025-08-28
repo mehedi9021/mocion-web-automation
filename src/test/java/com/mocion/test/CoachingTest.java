@@ -50,6 +50,140 @@ public class CoachingTest extends BaseTest {
                 .selectPlayerOneName()
                 .selectPaymentMethodCash()
                 .clickBookNowButton();
+
+        assertThat(coachingPage.gameWithCoachCreateSuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Game with the coach create with player payment in app should successful")
+    public void verify_game_with_the_coach_create_with_player_payment_in_app_should_succeed() {
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        coachingPage
+                .clickCoachingFromNavigationBar()
+                .clickGameWithCoachFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickCreateButton()
+                .selectCoachName()
+                .fillTotalMatchPrice(TOTAL_MATCH_PRICE)
+                .clickCheckScheduleButton()
+                .selectSchedule()
+                .clickSaveButton()
+                .selectCourtName()
+                .selectLevellingSessionOn()
+                .fillMinPlayerLevel(MIN_PLAYER_LEVEL)
+                .fillMaxPlayerLevel(MAX_PLAYER_LEVEL)
+                .selectGenderBoth()
+                .fillNotes(NOTES)
+                .selectPlayerOneName()
+                .selectPaymentMethodInApp()
+                .clickBookNowButton();
+
+        assertThat(coachingPage.gameWithCoachCreateSuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Game with the coach create with player payment credit debit card should successful")
+    public void verify_game_with_the_coach_create_with_player_payment_credit_debit_card_should_succeed() {
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        coachingPage
+                .clickCoachingFromNavigationBar()
+                .clickGameWithCoachFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickCreateButton()
+                .selectCoachName()
+                .fillTotalMatchPrice(TOTAL_MATCH_PRICE)
+                .clickCheckScheduleButton()
+                .selectSchedule()
+                .clickSaveButton()
+                .selectCourtName()
+                .selectLevellingSessionOn()
+                .fillMinPlayerLevel(MIN_PLAYER_LEVEL)
+                .fillMaxPlayerLevel(MAX_PLAYER_LEVEL)
+                .selectGenderBoth()
+                .fillNotes(NOTES)
+                .selectPlayerOneName()
+                .selectPaymentMethodCreditDebitCard()
+                .clickBookNowButton();
+
+        assertThat(coachingPage.gameWithCoachCreateSuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Game with the coach create with player payment payment link should successful")
+    public void verify_game_with_the_coach_create_with_player_payment_payment_link_should_succeed() {
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        coachingPage
+                .clickCoachingFromNavigationBar()
+                .clickGameWithCoachFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickCreateButton()
+                .selectCoachName()
+                .fillTotalMatchPrice(TOTAL_MATCH_PRICE)
+                .clickCheckScheduleButton()
+                .selectSchedule()
+                .clickSaveButton()
+                .selectCourtName()
+                .selectLevellingSessionOn()
+                .fillMinPlayerLevel(MIN_PLAYER_LEVEL)
+                .fillMaxPlayerLevel(MAX_PLAYER_LEVEL)
+                .selectGenderBoth()
+                .fillNotes(NOTES)
+                .selectPlayerOneName()
+                .selectPaymentMethodPaymentLink()
+                .clickBookNowButton();
+
+        assertThat(coachingPage.gameWithCoachCreateSuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Game with the coach create with player payment bank transfer should successful")
+    public void verify_game_with_the_coach_create_with_player_payment_bank_transfer_should_succeed() {
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        coachingPage
+                .clickCoachingFromNavigationBar()
+                .clickGameWithCoachFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickCreateButton()
+                .selectCoachName()
+                .fillTotalMatchPrice(TOTAL_MATCH_PRICE)
+                .clickCheckScheduleButton()
+                .selectSchedule()
+                .clickSaveButton()
+                .selectCourtName()
+                .selectLevellingSessionOn()
+                .fillMinPlayerLevel(MIN_PLAYER_LEVEL)
+                .fillMaxPlayerLevel(MAX_PLAYER_LEVEL)
+                .selectGenderBoth()
+                .fillNotes(NOTES)
+                .selectPlayerOneName()
+                .selectPaymentMethodBankTransfer()
+                .clickBookNowButton();
+
+        assertThat(coachingPage.gameWithCoachCreateSuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Cancel booking without refund should successful")
+    public void verify_cancel_booking_without_refund_should_succeed() {
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        coachingPage
+                .clickCoachingFromNavigationBar()
+                .clickGameWithCoachFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickMenuIcon()
+                .clickCancelBooking()
+                .clickCancelWithoutRefundButton();
+
+        coachingPage
+                .bookingCancelSuccessMessageLocator()
+                .waitFor(new Locator.WaitForOptions()
+                        .setState(WaitForSelectorState.VISIBLE));
+        assertThat(coachingPage.bookingCancelSuccessMessageLocator()).isVisible();
     }
 
     @Test(description = "Cancel booking with refund should successful")
