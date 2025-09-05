@@ -5,6 +5,8 @@ import com.mocion.web.pages.LoginPage;
 import com.mocion.web.pages.PrivateCoachingPage;
 import org.testng.annotations.Test;
 
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+
 public class PrivateCoachingTest extends BaseTest {
     public LoginPage loginPage;
     public LocationPage locationPage;
