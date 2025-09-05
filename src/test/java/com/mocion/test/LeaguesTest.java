@@ -10,6 +10,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+
 public class LeaguesTest extends BaseTest {
     public LoginPage loginPage;
     public LeaguesPage leaguesPage;

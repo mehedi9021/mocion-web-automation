@@ -8,6 +8,8 @@ import com.mocion.web.pages.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+
 public class GameWIthCoachTest extends BaseTest {
     public LoginPage loginPage;
     public LocationPage locationPage;

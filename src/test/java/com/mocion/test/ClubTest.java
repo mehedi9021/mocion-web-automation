@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 
 import java.util.Random;
 
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static org.testng.AssertJUnit.assertTrue;
 
 public class ClubTest extends BaseTest {
