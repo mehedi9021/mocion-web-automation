@@ -9,8 +9,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-
 public class AcademyTest extends BaseTest {
     public LoginPage loginPage;
     public Random random;

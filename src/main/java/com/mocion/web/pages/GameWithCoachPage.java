@@ -3,7 +3,7 @@ package com.mocion.web.pages;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
-public class CoachingPage {
+public class GameWithCoachPage {
     private final Page page;
 
     public String coachingText = "text='Coaching'";
@@ -35,133 +35,180 @@ public class CoachingPage {
     public String gameWithCoachCreateSuccessMessage = "text='Successful.'";
     public String courtNameDropdown = ".react-select__dropdown-indicator";
     public String coachName = "text='Coach Farah'";
+    public String duplicateText = "li:has-text('Duplicate')";
+    public String chatWithPlayersText = "li:has-text('chat with players')";
+    public String firstConversation = ".w-full.flex.px-8";
+    public String conversationTextInputField = ".editable.w-full.pt-2";
+    public String sendMessageIcon = ".lucide.lucide-send";
+    public String sentMessageText = ".flex.flex-col.gap-2.py-2.pr-2";
+    public String editGameWithCoachText = "li.flex:has-text('Edit')";
+    public String gameWithCoachEditSuccessMessage = "text='Booking updated successfully'";
 
-    public CoachingPage(Page page) {
+    public GameWithCoachPage(Page page) {
         this.page = page;
     }
 
-    public CoachingPage clickCoachingFromNavigationBar() {
+    public GameWithCoachPage clickCoachingFromNavigationBar() {
         page.locator(coachingText).click();
         return this;
     }
 
-    public CoachingPage clickGameWithCoachFromNavigationBar() {
+    public GameWithCoachPage clickGameWithCoachFromNavigationBar() {
         page.locator(gameWithCoachText).click();
         return this;
     }
 
-    public CoachingPage selectClubName(String clubName) {
+    public GameWithCoachPage selectClubName(String clubName) {
         page.selectOption(clubNameDropdown, clubName);
         return this;
     }
 
-    public CoachingPage clickMenuIcon() {
+    public GameWithCoachPage clickMenuIcon() {
         page.locator(menuIcon).nth(3).click();
         return this;
     }
 
-    public CoachingPage clickCancelBooking() {
+    public GameWithCoachPage clickDuplicate() {
+        page.locator(duplicateText).click();
+        return this;
+    }
+
+    public GameWithCoachPage clickCancelBooking() {
         page.locator(cancelBookingText).click();
         return this;
     }
 
-    public CoachingPage clickCreateButton() {
+    public GameWithCoachPage clickCreateButton() {
         page.locator(createButton).click();
         return this;
     }
 
-    public CoachingPage selectCoachName() {
+    public GameWithCoachPage selectCoachName() {
         page.locator(coachingCreateDropdowns).nth(0).click();
         page.locator(coachName).nth(0).click();
         return this;
     }
 
-    public CoachingPage fillTotalMatchPrice(String totalMatchPrice) {
+    public GameWithCoachPage editCoachName() {
+        page.locator(coachingCreateDropdowns).nth(0).click();
+        page.locator(coachName).nth(1).click();
+        return this;
+    }
+
+    public GameWithCoachPage fillTotalMatchPrice(String totalMatchPrice) {
         page.locator(totalMatchPriceField).fill(totalMatchPrice);
         return this;
     }
 
-    public CoachingPage clickCheckScheduleButton() {
+    public GameWithCoachPage clickCheckScheduleButton() {
         page.locator(checkScheduleButton).nth(0).click();
         return this;
     }
 
-    public CoachingPage selectCourtName() {
+    public GameWithCoachPage selectCourtName() {
         page.locator(courtNameDropdown).nth(1).click();
         page.keyboard().press("Enter");
         return this;
     }
 
-    public CoachingPage selectLevellingSessionOn() {
+    public GameWithCoachPage selectLevellingSessionOn() {
         page.locator(levellingSessionOn).click();
         return this;
     }
 
-    public CoachingPage fillMinPlayerLevel(String minPlayerLevel) {
+    public GameWithCoachPage fillMinPlayerLevel(String minPlayerLevel) {
         page.locator(minPlayerLevelField).fill(minPlayerLevel);
         return this;
     }
 
-    public CoachingPage fillMaxPlayerLevel(String maxPlayerLevel) {
+    public GameWithCoachPage fillMaxPlayerLevel(String maxPlayerLevel) {
         page.locator(maxPlayerLevelField).fill(maxPlayerLevel);
         return this;
     }
 
-    public CoachingPage selectGenderBoth() {
+    public GameWithCoachPage selectGenderBoth() {
         page.locator(genderBoth).click();
         return this;
     }
 
-    public CoachingPage fillNotes(String notes) {
+    public GameWithCoachPage fillNotes(String notes) {
         page.locator(notesField).fill(notes);
         return this;
     }
 
-    public CoachingPage selectSchedule() {
-        page.locator(scheduleField).nth(8).click();
-        page.locator(scheduleField).nth(8).click();
+    public GameWithCoachPage selectSchedule() {
+        page.locator(scheduleField).nth(12).click();
+        page.locator(scheduleField).nth(12).click();
         return this;
     }
 
-    public CoachingPage clickSaveButton() {
+    public GameWithCoachPage clickSaveButton() {
         page.locator(saveButton).nth(1).click();
         return this;
     }
 
-    public CoachingPage selectPlayerOneName() {
+    public GameWithCoachPage selectPlayerOneName() {
         page.locator(coachingCreateDropdowns).nth(1).click();
         page.keyboard().press("Enter");
         return this;
     }
 
-    public CoachingPage selectPaymentMethodInApp() {
+    public GameWithCoachPage selectPaymentMethodInApp() {
         page.locator(PaymentMethodDropdown).nth(2).click();
         page.locator(paymentMethodInApp).click();
         return this;
     }
 
-    public CoachingPage selectPaymentMethodPaymentLink() {
+    public GameWithCoachPage selectPaymentMethodPaymentLink() {
         page.locator(PaymentMethodDropdown).nth(2).click();
         page.locator(paymentMethodPaymentLink).click();
         return this;
     }
 
-    public CoachingPage selectPaymentMethodCreditDebitCard() {
+    public GameWithCoachPage selectPaymentMethodCreditDebitCard() {
         page.locator(PaymentMethodDropdown).nth(2).click();
         page.locator(paymentMethodCreditDebitCard).click();
         return this;
     }
 
-    public CoachingPage selectPaymentMethodCash() {
+    public GameWithCoachPage selectPaymentMethodCash() {
         page.locator(PaymentMethodDropdown).nth(2).click();
         page.locator(paymentMethodCash).click();
         return this;
     }
 
-    public CoachingPage selectPaymentMethodBankTransfer() {
+    public GameWithCoachPage selectPaymentMethodBankTransfer() {
         page.locator(PaymentMethodDropdown).nth(2).click();
         page.locator(paymentMethodBankTransfer).click();
         return this;
+    }
+
+    public GameWithCoachPage clickChatWithPlayers() {
+        page.locator(chatWithPlayersText).click();
+        return this;
+    }
+
+    public GameWithCoachPage clickFirstConversation() {
+        page.locator(firstConversation).nth(0).click();
+        return this;
+    }
+
+    public GameWithCoachPage fillConversationText(String conversationText) {
+        page.locator(conversationTextInputField).fill(conversationText);
+        return this;
+    }
+
+    public GameWithCoachPage clickEditGameWithCoach() {
+        page.locator(editGameWithCoachText).click();
+        return this;
+    }
+
+    public void clickSendIcon() {
+        page.locator(sendMessageIcon).click();
+    }
+
+    public void clickSaveGameWithCoachButton() {
+        page.locator(saveButton).click();
     }
 
     public void clickBookNowButton() {
@@ -174,6 +221,14 @@ public class CoachingPage {
 
     public void clickCancelWithoutRefundButton() {
         page.locator(cancelWithoutRefundButton).click();
+    }
+
+    public String sentMessageTextContent() {
+        return page.locator(sentMessageText).last().textContent();
+    }
+
+    public Locator gameWithCoachEditSuccessMessageLocator() {
+        return page.locator(gameWithCoachEditSuccessMessage);
     }
 
     public Locator bookingCancelSuccessMessageLocator() {

@@ -2,17 +2,16 @@ package com.mocion.test;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.options.WaitForSelectorState;
-import com.mocion.web.pages.CoachingPage;
+import com.mocion.web.pages.GameWithCoachPage;
 import com.mocion.web.pages.LocationPage;
 import com.mocion.web.pages.LoginPage;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-
-public class CoachingTest extends BaseTest {
+public class GameWIthCoachTest extends BaseTest {
     public LoginPage loginPage;
     public LocationPage locationPage;
-    public CoachingPage coachingPage;
+    public GameWithCoachPage gameWithCoachPage;
 
     private static final String CLUB_NAME = "Farah123";
     private static final String TOTAL_MATCH_PRICE = "10";
@@ -23,7 +22,7 @@ public class CoachingTest extends BaseTest {
     public void initPages() {
         loginPage = new LoginPage(page);
         locationPage = new LocationPage(page);
-        coachingPage = new CoachingPage(page);
+        gameWithCoachPage = new GameWithCoachPage(page);
     }
 
     @Test(description = "Game with the coach create with player payment cash should successful")
@@ -31,7 +30,7 @@ public class CoachingTest extends BaseTest {
         initPages();
         locationPage.setLocationPermissionAllowed();
         loginPage.userLogin();
-        coachingPage
+        gameWithCoachPage
                 .clickCoachingFromNavigationBar()
                 .clickGameWithCoachFromNavigationBar()
                 .selectClubName(CLUB_NAME)
@@ -51,7 +50,7 @@ public class CoachingTest extends BaseTest {
                 .selectPaymentMethodCash()
                 .clickBookNowButton();
 
-        assertThat(coachingPage.gameWithCoachCreateSuccessMessageLocator()).isVisible();
+        assertThat(gameWithCoachPage.gameWithCoachCreateSuccessMessageLocator()).isVisible();
     }
 
     @Test(description = "Game with the coach create with player payment in app should successful")
@@ -59,7 +58,7 @@ public class CoachingTest extends BaseTest {
         initPages();
         locationPage.setLocationPermissionAllowed();
         loginPage.userLogin();
-        coachingPage
+        gameWithCoachPage
                 .clickCoachingFromNavigationBar()
                 .clickGameWithCoachFromNavigationBar()
                 .selectClubName(CLUB_NAME)
@@ -79,7 +78,7 @@ public class CoachingTest extends BaseTest {
                 .selectPaymentMethodInApp()
                 .clickBookNowButton();
 
-        assertThat(coachingPage.gameWithCoachCreateSuccessMessageLocator()).isVisible();
+        assertThat(gameWithCoachPage.gameWithCoachCreateSuccessMessageLocator()).isVisible();
     }
 
     @Test(description = "Game with the coach create with player payment credit debit card should successful")
@@ -87,7 +86,7 @@ public class CoachingTest extends BaseTest {
         initPages();
         locationPage.setLocationPermissionAllowed();
         loginPage.userLogin();
-        coachingPage
+        gameWithCoachPage
                 .clickCoachingFromNavigationBar()
                 .clickGameWithCoachFromNavigationBar()
                 .selectClubName(CLUB_NAME)
@@ -107,7 +106,7 @@ public class CoachingTest extends BaseTest {
                 .selectPaymentMethodCreditDebitCard()
                 .clickBookNowButton();
 
-        assertThat(coachingPage.gameWithCoachCreateSuccessMessageLocator()).isVisible();
+        assertThat(gameWithCoachPage.gameWithCoachCreateSuccessMessageLocator()).isVisible();
     }
 
     @Test(description = "Game with the coach create with player payment payment link should successful")
@@ -115,7 +114,7 @@ public class CoachingTest extends BaseTest {
         initPages();
         locationPage.setLocationPermissionAllowed();
         loginPage.userLogin();
-        coachingPage
+        gameWithCoachPage
                 .clickCoachingFromNavigationBar()
                 .clickGameWithCoachFromNavigationBar()
                 .selectClubName(CLUB_NAME)
@@ -135,7 +134,7 @@ public class CoachingTest extends BaseTest {
                 .selectPaymentMethodPaymentLink()
                 .clickBookNowButton();
 
-        assertThat(coachingPage.gameWithCoachCreateSuccessMessageLocator()).isVisible();
+        assertThat(gameWithCoachPage.gameWithCoachCreateSuccessMessageLocator()).isVisible();
     }
 
     @Test(description = "Game with the coach create with player payment bank transfer should successful")
@@ -143,7 +142,7 @@ public class CoachingTest extends BaseTest {
         initPages();
         locationPage.setLocationPermissionAllowed();
         loginPage.userLogin();
-        coachingPage
+        gameWithCoachPage
                 .clickCoachingFromNavigationBar()
                 .clickGameWithCoachFromNavigationBar()
                 .selectClubName(CLUB_NAME)
@@ -163,7 +162,103 @@ public class CoachingTest extends BaseTest {
                 .selectPaymentMethodBankTransfer()
                 .clickBookNowButton();
 
-        assertThat(coachingPage.gameWithCoachCreateSuccessMessageLocator()).isVisible();
+        assertThat(gameWithCoachPage.gameWithCoachCreateSuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Edit game with the coach with required fields should successful")
+    public void verify_edit_game_with_the_coach_with_required_fields_should_succeed() {
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        gameWithCoachPage
+                .clickCoachingFromNavigationBar()
+                .clickGameWithCoachFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickMenuIcon()
+                .clickEditGameWithCoach()
+                .editCoachName()
+                .selectCourtName()
+                .fillMinPlayerLevel(MIN_PLAYER_LEVEL)
+                .fillMaxPlayerLevel(MAX_PLAYER_LEVEL)
+                .clickSaveGameWithCoachButton();
+
+        assertThat(gameWithCoachPage.gameWithCoachEditSuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Edit game with the coach with optional fields should successful")
+    public void verify_edit_game_with_the_coach_with_optional_fields_should_succeed() {
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        gameWithCoachPage
+                .clickCoachingFromNavigationBar()
+                .clickGameWithCoachFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickMenuIcon()
+                .clickEditGameWithCoach()
+                .selectLevellingSessionOn()
+                .selectGenderBoth()
+                .clickSaveGameWithCoachButton();
+
+        assertThat(gameWithCoachPage.gameWithCoachEditSuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Edit game with the coach with all fields should successful")
+    public void verify_edit_game_with_the_coach_with_all_fields_should_succeed() {
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        gameWithCoachPage
+                .clickCoachingFromNavigationBar()
+                .clickGameWithCoachFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickMenuIcon()
+                .clickEditGameWithCoach()
+                .editCoachName()
+                .selectCourtName()
+                .selectLevellingSessionOn()
+                .fillMinPlayerLevel(MIN_PLAYER_LEVEL)
+                .fillMaxPlayerLevel(MAX_PLAYER_LEVEL)
+                .selectGenderBoth()
+                .clickSaveGameWithCoachButton();
+
+        assertThat(gameWithCoachPage.gameWithCoachEditSuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Duplicate game with the coach should successful")
+    public void verify_duplicate_game_with_the_coach_should_succeed() {
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        gameWithCoachPage
+                .clickCoachingFromNavigationBar()
+                .clickGameWithCoachFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickMenuIcon()
+                .clickDuplicate()
+                .clickSaveGameWithCoachButton();
+
+        assertThat(gameWithCoachPage.gameWithCoachCreateSuccessMessageLocator()).isVisible();
+    }
+
+    @Test(description = "Chat with game with the coach players should successful")
+    public void verify_chat_with_game_with_the_coach_players_should_succeed() {
+        String conversationText = "Hello, this is a test message";
+
+        initPages();
+        locationPage.setLocationPermissionAllowed();
+        loginPage.userLogin();
+        gameWithCoachPage
+                .clickCoachingFromNavigationBar()
+                .clickGameWithCoachFromNavigationBar()
+                .selectClubName(CLUB_NAME)
+                .clickMenuIcon()
+                .clickChatWithPlayers()
+                .clickFirstConversation()
+                .fillConversationText(conversationText)
+                .clickSendIcon();
+
+        Assert.assertTrue(gameWithCoachPage.sentMessageTextContent().contains(conversationText));
     }
 
     @Test(description = "Cancel booking without refund should successful")
@@ -171,7 +266,7 @@ public class CoachingTest extends BaseTest {
         initPages();
         locationPage.setLocationPermissionAllowed();
         loginPage.userLogin();
-        coachingPage
+        gameWithCoachPage
                 .clickCoachingFromNavigationBar()
                 .clickGameWithCoachFromNavigationBar()
                 .selectClubName(CLUB_NAME)
@@ -179,11 +274,11 @@ public class CoachingTest extends BaseTest {
                 .clickCancelBooking()
                 .clickCancelWithoutRefundButton();
 
-        coachingPage
+        gameWithCoachPage
                 .bookingCancelSuccessMessageLocator()
                 .waitFor(new Locator.WaitForOptions()
                         .setState(WaitForSelectorState.VISIBLE));
-        assertThat(coachingPage.bookingCancelSuccessMessageLocator()).isVisible();
+        assertThat(gameWithCoachPage.bookingCancelSuccessMessageLocator()).isVisible();
     }
 
     @Test(description = "Cancel booking with refund should successful")
@@ -191,7 +286,7 @@ public class CoachingTest extends BaseTest {
         initPages();
         locationPage.setLocationPermissionAllowed();
         loginPage.userLogin();
-        coachingPage
+        gameWithCoachPage
                 .clickCoachingFromNavigationBar()
                 .clickGameWithCoachFromNavigationBar()
                 .selectClubName(CLUB_NAME)
@@ -199,10 +294,10 @@ public class CoachingTest extends BaseTest {
                 .clickCancelBooking()
                 .clickCancelWithRefundButton();
 
-        coachingPage
+        gameWithCoachPage
                 .bookingCancelSuccessMessageLocator()
                 .waitFor(new Locator.WaitForOptions()
                         .setState(WaitForSelectorState.VISIBLE));
-        assertThat(coachingPage.bookingCancelSuccessMessageLocator()).isVisible();
+        assertThat(gameWithCoachPage.bookingCancelSuccessMessageLocator()).isVisible();
     }
 }
